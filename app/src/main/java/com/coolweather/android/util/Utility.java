@@ -34,6 +34,12 @@ public class Utility {
         return false;
     }
 
+    /**
+     * 解析和处理服务器返回的市级数据
+     * @param response
+     * @param provinceId
+     * @return
+     */
     public static boolean handleCityResponse(String response,int provinceId){
         if(! TextUtils.isEmpty(response)){
             try {
@@ -54,6 +60,12 @@ public class Utility {
         return false;
     }
 
+    /**
+     * 解析和处理服务器返回的县级数据
+     * @param response
+     * @param cityId
+     * @return
+     */
     public static boolean handleCountyResponse(String response, int cityId){
         if (! TextUtils.isEmpty(response)){
             try {
@@ -63,8 +75,10 @@ public class Utility {
                     County county = new County();
                     county.setCountyName(countObject.getString("name"));
                     county.setWeatherId(countObject.getString("weather_id"));
-
+                    county.setCityId(cityId);
+                    county.save();
                 }
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
