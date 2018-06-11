@@ -22,7 +22,7 @@ import okhttp3.Response;
 public class AutoUpdateService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
-           return null;
+        return null;
     }
 
     @Override
